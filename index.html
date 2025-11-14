@@ -1,123 +1,126 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <title>Zenyth</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial;
-            color: white;
-            background: url('https://i.imgur.com/3f782gC.jpeg') center/cover fixed;
-            overflow-x: hidden;
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Zenyth's Brain</title>
 
-        /* effetto pioggia */
-        .rain {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            top: 0;
-            left: 0;
-            background-image: url('https://i.imgur.com/qK4g5dB.png');
-            animation: rainAnim 0.3s linear infinite;
-            opacity: 0.4;
-        }
-        @keyframes rainAnim {
-            from { background-position: 0 0; }
-            to { background-position: 0 100%; }
-        }
-
-        .container {
-            width: 90%;
-            max-width: 800px;
-            margin: 80px auto;
-            background: rgba(0,0,0,0.5);
-            padding: 30px;
-            border-radius: 15px;
-            backdrop-filter: blur(5px);
-        }
-
-        .friend {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            background: rgba(255,255,255,0.07);
-            padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-        }
-
-        .friend img {
-            width: 70px;
-            height: 70px;
-            border-radius: 100%;
-        }
-    </style>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="rain"></div>
+  <!-- AUDIO LOCALE (se esiste, verrà usato e provato ad avviarsi) -->
+  <audio id="localAudio" src="audio/musica.mp3" loop preload="auto"></audio>
 
-<!-- MUSICA AUTOPLAY CON CLICK INVISIBILE -->
-<audio id="music" src="audio/musica.mp3" autoplay loop></audio>
-<button id="playButton" style="opacity:0; position:absolute; pointer-events:none;">Play</button>
+  <!-- YOUTUBE FALLBACK: autoplay muted (se browser lo permette) -->
+  <div id="yt-container" aria-hidden="true">
+    <iframe id="ytframe"
+      src="https://www.youtube.com/embed/I37l6C7UB5w?autoplay=1&loop=1&playlist=I37l6C7UB5w&controls=0&showinfo=0&rel=0&mute=1"
+      frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
 
-<script>
-window.addEventListener("load", () => {
-    const audio = document.getElementById("music");
-    const btn = document.getElementById("playButton");
+  <div class="bg-gradient"></div>
 
-    btn.click(); // clic invisibile
-    audio.play().catch(() => btn.click());
-});
-</script>
+  <header class="site-header">
+    <h1>Zenyth's brain</h1>
+  </header>
 
-<div class="container">
-    <h1 style="text-align:center;">Zenyth</h1>
-
-    <!-- Vincenzo -->
-    <div class="friend">
-        <img src="https://cdn.discordapp.com/avatars/1398320387263299584/47b6d89ded5958a44aa7e43bc0c5f9b3.png?size=1024">
-        <p><b>Vincenzo</b><br>
-        Ho conosciuto Vincenzo su FiveM e, dopo quattro mesi di chiacchiere e risate online, sono andato nella sua città per incontrarlo dal vivo. Siamo andati al mare e ci siamo divertiti come se ci conoscessimo da sempre. Abbiamo provato a creare diversi server FiveM: progetti quasi finiti ma mai del tutto conclusi, anche se ogni tentativo è stato un’esperienza che ci ha uniti ancora di più. Vincenzo è la prova che le migliori amicizie possono nascere anche dietro uno schermo.
+  <main>
+    <section class="cards">
+      <!-- Vincenzo -->
+      <article class="card">
+        <div class="avatar">
+          <img src="https://cdn.discordapp.com/avatars/1398320387263299584/47b6d89ded5958a44aa7e43bc0c5f9b3.png?size=1024" alt="Vincenzo">
+        </div>
+        <h2>Vincenzo</h2>
+        <p class="desc">
+          Ho conosciuto Vincenzo su FiveM e, dopo quattro mesi di chiacchiere e risate online,
+          sono andato nella sua città per incontrarlo dal vivo. Siamo andati al mare e ci siamo
+          divertiti come se ci conoscessimo da sempre.
+          <br><br>
+          Abbiamo provato a creare diversi server FiveM: progetti quasi finiti ma mai del tutto conclusi,
+          anche se ogni tentativo è stato un’esperienza che ci ha uniti ancora di più.
+          <br><br>
+          Vincenzo è la prova che le migliori amicizie possono nascere anche dietro uno schermo.
         </p>
-    </div>
+      </article>
 
-    <!-- Mudi -->
-    <div class="friend">
-        <img src="https://cdn.discordapp.com/avatars/1319280994402172941/fe3aed40b4ba9d616c5ebdbc41b4a4c2.png?size=1024">
-        <p><b>Mudi</b><br>
-        Mudi è un ragazzo che ha sempre creduto davvero nel progetto di Golden RP. Purtroppo, per colpa di alcune persone, il server ha chiuso… ma lui non ha mai smesso di supportarci. Ancora oggi ci dà una mano con il server di CoralPvP. L’ho conosciuto tanto tempo fa, poi per un periodo abbiamo perso i contatti. Un mese fa abbiamo ripreso a sentirci e, nonostante tutto il tempo passato, è tornato con la stessa voglia di costruire qualcosa insieme.
+      <!-- Mudi -->
+      <article class="card">
+        <div class="avatar">
+          <img src="https://cdn.discordapp.com/avatars/1319280994402172941/fe3aed40b4ba9d616c5ebdbc41b4a4c2.png?size=1024" alt="Mudi">
+        </div>
+        <h2>Mudi</h2>
+        <p class="desc">
+          Mudi è un ragazzo che ha sempre creduto davvero nel progetto di Golden RP.
+          Purtroppo, per colpa di alcune persone, il server ha chiuso… ma lui non ha mai smesso di supportarci.
+          Ancora oggi ci dà una mano con il server di CoralPvP.
+          <br><br>
+          L’ho conosciuto tanto tempo fa, poi per un periodo abbiamo perso i contatti.
+          Un mese fa abbiamo ripreso a sentirci e, nonostante tutto il tempo passato,
+          è tornato con la stessa voglia di costruire qualcosa insieme.
+          <br><br>
+          Mudi è uno di quelli su cui puoi contare davvero.
         </p>
-    </div>
+      </article>
 
-    <!-- Avzq -->
-    <div class="friend">
-        <img src="https://cdn.discordapp.com/avatars/1317624424345767967/3bcb4ebd2e4e8039efe566761f02dbab.png?size=1024">
-        <p><b>Avzq</b><br>
-        Avzq l’ho conosciuto anni fa in un team di Rocket League. Da subito siamo entrati in sintonia. Un mese fa ci siamo rincontrati e tutto è tornato naturale. Le sue live sono sempre divertenti e spontanee.
+      <!-- Avzq -->
+      <article class="card">
+        <div class="avatar">
+          <img src="https://cdn.discordapp.com/avatars/1317624424345767967/3bcb4ebd2e4e8039efe566761f02dbab.png?size=1024" alt="Avzq">
+        </div>
+        <h2>Avzq</h2>
+        <p class="desc">
+          L’ho conosciuto anni fa in un team di Rocket League. Da subito siamo entrati in sintonia:
+          partite, risate, allenamenti e un sacco di momenti che ci hanno fatto diventare davvero amici.
+          <br><br>
+          Dopo un periodo di distanza ci siamo ritrovati e tutto è tornato naturale.
+          Le sue live sono spontanee, leggere e sempre divertenti.
         </p>
-    </div>
+      </article>
 
-    <!-- Sidemafia -->
-    <div class="friend">
-        <img src="https://cdn.discordapp.com/avatars/1132712218203537469/6c75a25c4070f2c6164cfe76b250a13f.png?size=1024">
-        <p><b>Sidemafia</b><br>
-        L’ho conosciuto su Minecraft, ed è stato uno dei più leali e simpatici. Abbiamo pure creato un server insieme. Anche se non ha avuto successo, è stata una delle esperienze più belle.
+      <!-- Sidemafia -->
+      <article class="card">
+        <div class="avatar">
+          <img src="https://cdn.discordapp.com/avatars/1132712218203537469/6c75a25c4070f2c6164cfe76b250a13f.png?size=1024" alt="Sidemafia">
+        </div>
+        <h2>Sidemafia</h2>
+        <p class="desc">
+          L’ho conosciuto in un server Minecraft, e fin da subito ci siamo divertiti un sacco insieme.
+          Nonostante la differenza di età, ci trovavamo benissimo: ore e ore a giocare, ridere e combinare di tutto.
+          <br><br>
+          Dopo un po’ avevamo avuto l’idea di creare un nostro server Minecraft. Ci siamo impegnati,
+          ci siamo riusciti, ma purtroppo senza ottenere il risultato che speravamo.
         </p>
-    </div>
+      </article>
 
-    <!-- Altri -->
-    <div class="friend">
-        <img src="https://cdn.discordapp.com/avatars/1236468389522968627/bfff256c1d1a0d1e2b45a44bd53bda09.png?size=1024">
-        <p><b>E tutti gli altri...</b><br>
-        Ci sarebbero almeno altri 10 o 20 nomi, ma non ci sarebbe spazio per tutti. Anche se non siete qui, fate parte del mio percorso.
+      <!-- Messaggio finale -->
+      <article class="card final-card">
+        <div class="avatar">
+          <img src="https://cdn.discordapp.com/avatars/1236468389522968627/bfff256c1d1a0d1e2b45a44bd53bda09.png?size=1024" alt="A tutti gli altri">
+        </div>
+        <h2>A tutti gli altri</h2>
+        <p class="desc">
+          Ci sarebbero almeno altri 10 o 20 nomi da aggiungere, ma non li metto non perché non mi siano simpatici,
+          ma semplicemente perché non ci sarebbe lo spazio per tutti.
+          <br><br>
+          Ognuno di voi ha lasciato qualcosa, e anche se non siete in questa lista, sappiate che fate parte del mio percorso.
         </p>
-    </div>
-</div>
+      </article>
+    </section>
 
+    <section class="ending">
+      <p>Se state leggendo questo è perché ho quittato o sono morto, in entrambi i casi sappiate che non vi dimenticherò mai e vi ringrazio con tutto il cuore per aver reso la mia vita migliore con qualche messaggio, vi adoro 💜</p>
+    </section>
+  </main>
+
+  <!-- UI audio controls (in alto a sinistra) -->
+  <div class="audio-ui">
+    <button id="playToggle" class="btn">⏸️</button>
+    <button id="muteToggle" class="btn">🔊</button>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
